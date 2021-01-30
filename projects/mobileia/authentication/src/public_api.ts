@@ -10,3 +10,4 @@ export * from './lib/authentication.module';
 export * from './lib/auth.guard';
 export * from './lib/mia-auth-http.service';
 export * from './lib/mia-table-service.service';
+export * from './lib/mia-auth.interceptor';
