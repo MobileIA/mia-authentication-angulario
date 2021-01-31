@@ -13,6 +13,10 @@ export class MiaAuthInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return this.authService.getAccessToken().pipe(switchMap(accessToken => {
+            if(accessToken == undefined){
+                return next.handle(req);
+            }
+
             return next.handle(req.clone({
                 setHeaders: { "X-Api-Key": accessToken },
                 params: req.params.append('access_token', accessToken),
